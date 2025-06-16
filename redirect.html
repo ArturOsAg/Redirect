@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // Ссылка на raw-текстовый файл с финальной URL
+    const urlToTextFile = "https://www.youtube.com/watch?v=2R7srk7E8I4";
+
+    fetch(urlToTextFile)
+      .then(response => response.text())
+      .then(finalUrl => {
+        // Убираем лишние пробелы/переносы
+        finalUrl = finalUrl.trim();
+        if (finalUrl.startsWith("http")) {
+          window.location.href = finalUrl;
+        } else {
+          document.body.innerHTML = "Недопустимый URL.";
+        }
+      })
+      .catch(error => {
+        console.error("Ошибка:", error);
+        document.body.innerHTML = "Ошибка загрузки ссылки.";
+      });
+  </script>
+</head>
+<body>
+  <p>Переадресация...</p>
+</body>
+</html>
